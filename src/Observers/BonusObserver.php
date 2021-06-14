@@ -38,5 +38,6 @@ class BonusObserver
             'score' => $bonus->score,
             'current_score' => $bonus->user->score + $bonus->score
         ]);
+        $bonus->updateQuietly(['paid' => true]);
     }
 }
