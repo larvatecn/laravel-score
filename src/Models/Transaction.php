@@ -139,7 +139,7 @@ class Transaction extends Model
         DB::beginTransaction();
         try {
             $user = $this->user()->lockForUpdate()->first();
-            $user->update(['score' => $this->current_score]);//更新用户积分
+            $user->updateQuietly(['score' => $this->current_score]);
             DB::commit();
         } catch (\Exception $e) {//回滚事务
             DB::rollback();
