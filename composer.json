@@ -1,0 +1,30 @@
+{
+  "name": "larva/laravel-score",
+  "description": "Integral Extension for Laravel.",
+  "keywords": [ "laravel", "score", "larva" ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.3|^8.0",
+    "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+    "illuminate/notifications": "^6.0 || ^7.0 || ^8.0",
+    "larva/laravel-settings": "^1.0",
+    "larva/laravel-transaction": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Larva\\Score\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Larva\\Score\\ScoreServiceProvider"
+      ]
+    }
+  },
+  "prefer-stable": true
+}
