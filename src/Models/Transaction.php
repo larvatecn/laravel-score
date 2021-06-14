@@ -65,28 +65,12 @@ class Transaction extends Model
     const TYPE_RECHARGE = 'recharge';//充值
     const TYPE_RECHARGE_REFUND = 'recharge_refund';//充值退款
     const TYPE_RECHARGE_REFUND_FAILED = 'recharge_refund_failed';//充值退款失败
-    const TYPE_WITHDRAWAL = 'withdrawal';//提现申请
-    const TYPE_WITHDRAWAL_FAILED = 'withdrawal_failed';//提现失败
-    const TYPE_WITHDRAWAL_REVOKED = 'withdrawal_revoked';//提现撤销
     const TYPE_PAYMENT = 'payment';//支付/收款
     const TYPE_PAYMENT_REFUND = 'payment_refund';//退款/收到退款
     const TYPE_TRANSFER = 'transfer';//转账/收到转账
     const TYPE_RECEIPTS_EXTRA = 'receipts_extra';//赠送
     const TYPE_ROYALTY = 'royalty';//分润/收到分润
     const TYPE_REWARD = 'reward';//奖励/收到奖励
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::created(function ($model) {
-            $model->commitToDb();
-        });
-    }
 
     /**
      * 为数组 / JSON 序列化准备日期。
@@ -109,9 +93,6 @@ class Transaction extends Model
             static::TYPE_RECHARGE => trans('score.' . static::TYPE_RECHARGE),
             static::TYPE_RECHARGE_REFUND => trans('score.' . static::TYPE_RECHARGE_REFUND),
             static::TYPE_RECHARGE_REFUND_FAILED => trans('score.' . static::TYPE_RECHARGE_REFUND_FAILED),
-            static::TYPE_WITHDRAWAL => trans('score.' . static::TYPE_WITHDRAWAL),
-            static::TYPE_WITHDRAWAL_FAILED => trans('score.' . static::TYPE_WITHDRAWAL_FAILED),
-            static::TYPE_WITHDRAWAL_REVOKED => trans('score.' . static::TYPE_WITHDRAWAL_REVOKED),
             static::TYPE_PAYMENT => trans('score.' . static::TYPE_PAYMENT),
             static::TYPE_PAYMENT_REFUND => trans('score.' . static::TYPE_PAYMENT_REFUND),
             static::TYPE_TRANSFER => trans('score.' . static::TYPE_TRANSFER),

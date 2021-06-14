@@ -84,32 +84,6 @@ class Recharge extends Model
     ];
 
     /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            if (empty($model->score)) {
-                $model->score = $model->amount;
-            }
-        });
-        static::created(function ($model) {
-            $model->charge()->create([
-                'user_id' => $model->user_id,
-                'amount' => $model->amount,
-                'channel' => $model->channel,
-                'subject' => trans('score.score_recharge'),
-                'body' => trans('score.score_recharge'),
-                'client_ip' => $model->client_ip,
-                'type' => $model->type,//交易类型
-            ]);
-        });
-    }
-
-    /**
      * 为数组 / JSON 序列化准备日期。
      *
      * @param DateTimeInterface $date

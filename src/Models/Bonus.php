@@ -66,29 +66,6 @@ class Bonus extends Model
     const UPDATED_AT = null;
 
     /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            $model->paid = false;
-        });
-        static::created(function ($model) {
-            /** @var Bonus $model */
-            $model->transaction()->create([
-                'user_id' => $model->user_id,
-                'type' => Transaction::TYPE_RECEIPTS_EXTRA,
-                'description' => $model->description,
-                'score' => $model->score,
-                'current_score' => $model->user->score + $model->score
-            ]);
-        });
-    }
-
-    /**
      * 为数组 / JSON 序列化准备日期。
      *
      * @param DateTimeInterface $date

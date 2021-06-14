@@ -36,6 +36,10 @@ class ScoreServiceProvider extends ServiceProvider
         Event::listen(\Larva\Transaction\Events\ChargeFailure::class, \Larva\Score\Listeners\ChargeFailureListener::class);//支付失败
         Event::listen(\Larva\Transaction\Events\ChargeShipped::class, \Larva\Score\Listeners\ChargeShippedListener::class);//支付成功
 
+        // Observers
+        \Larva\Score\Models\Bonus::observe(\Larva\Score\Observers\BonusObserver::class);
+        \Larva\Score\Models\Recharge::observe(\Larva\Score\Observers\RechargeObserver::class);
+        \Larva\Score\Models\Transaction::observe(\Larva\Score\Observers\TransactionObserver::class);
     }
 
     /**
