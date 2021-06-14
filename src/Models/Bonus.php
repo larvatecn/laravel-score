@@ -126,19 +126,4 @@ class Bonus extends Model
     {
         return $this->morphTo();
     }
-
-    /**
-     * @param $user_id
-     * @param $score
-     * @param $description
-     * @return Bonus
-     */
-    public static function give($user_id, $score, $description)
-    {
-        return static::create([
-            'user_id' => $user_id,
-            'score' => $score,
-            'description' => $description
-        ]);
-    }
 }
