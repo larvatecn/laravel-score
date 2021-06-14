@@ -42,6 +42,8 @@ class TransactionController extends AdminController
             });
             $grid->quickSearch(['id']);
             $grid->model()->orderBy('id', 'desc');
+
+            $grid->column('id', '流水号');
             $grid->column('user_id', '用户ID');
 
             $grid->column('score', '交易积分');
@@ -54,6 +56,7 @@ class TransactionController extends AdminController
             $grid->disableCreateButton();
             $grid->disableViewButton();
             $grid->disableEditButton();
+            $grid->disableDeleteButton();
 
         });
     }

@@ -62,6 +62,7 @@ class RechargeController extends AdminController
             $grid->disableCreateButton();
             $grid->disableViewButton();
             $grid->disableEditButton();
+            $grid->disableDeleteButton();
         });
     }
 }
