@@ -23,7 +23,7 @@ class Score
      * @param string $description
      * @return Bonus
      */
-    public static function Bonus(int $user_id, int $score, string $description): Bonus
+    public static function bonus(int $user_id, int $score, string $description): Bonus
     {
         return Bonus::create(['user_id' => $user_id, 'score' => $score, 'description' => $description]);
     }
